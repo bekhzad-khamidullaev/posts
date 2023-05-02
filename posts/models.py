@@ -1,5 +1,7 @@
-from django.db import models
+import datetime
 
+from django.db import models
+from django.utils.timezone import now
 # Create your models here.
 
 
@@ -8,10 +10,14 @@ class Post(models.Model):
         db_table = 'posts'
         verbose_name = "Пост"
         verbose_name_plural = "Посты"
-    last_changes = models.CharField(max_length=50, verbose_name='Последнее изменение')
-    text = models.TextField(verbose_name='Пост')
-    author = models.TextField(verbose_name="Автор", max_length=140)
-
-
+    title = models.TextField(max_length=200, default='Lorem ipsum', verbose_name='Заголовок')
+    body = models.TextField(default='Lorem ipsum', verbose_name='Tекст')
+    author = models.ForeignKey(
+        'auth.User',
+        on_delete=models.CASCADE,
+    )
+    updated_at = models.DateTimeField(default=now)
+    created_at = models.DateTimeField(default=now)
     def __str__(self):
-        return self.text
+        return self.title
+
