@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Windevs.uz</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="\ stylesheet">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Wallpoet" />
+	<!-- <link rel="stylesheet" href="{% static 'style.css' %}"> -->
+	<link rel="stylesheet" type="text/css" href="{% static 'mac_os.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'fontaws/css/font-awesome.min.css' %}">
+</head>
+<body>
+	<header class="header">
+		<div class="header__wrapper">
+<div class="header__row df">
+	<div class="header__column header__column_1 df">
+		<div class="header__window-nav-wrap df">
+<div class="header__window-nav-item">
+	<button class="header__window-nav-btn" id="close"></button>
+</div>
+<div class="header__window-nav-item">
+	<button class="header__window-nav-btn" id="scale"></button>
+</div>
+<div class="header__window-nav-item">
+	<button class="header__window-nav-btn" id="shrink"></button>
+</div>
+		</div>
+		<div class="header__slide-wrap df">
+<button class="header__slide-btn btn" id="prev-address">
+	<span class="header__slide-icon header__slide-icon_left"><</span>
+</button>
+<button class="header__slide-btn btn" id="next-address">
+	<span class="header__slide-icon header__slide-icon_right">></span>
+</button>
+		</div>
+		<div class="header__structure-wrap">
+<button class="header__structure-btn btn">
+	<span class="header__structure-icon"><i class="fa fa-language" aria-hidden="false"></i></i></span>
+</button>
+		</div>
+	</div>
+	<div class="header__column header__column_2 df">
+		<div class="header__address-name" id="address">WINDEVS.UZ</div>
+	</div>
+	<div class="header__column header__column_3 df">
+		<div class="header__search-wrap df">
+<div class="header__in-wrap">
+	<input class="header__search" type="search" id="search">
+	<span class="header__search-name">Search</span>
+	<span class="header__loupe"><i class="fa fa-search" aria-hidden="true"></i></span>
+</div>
+		</div>
+	</div>
+</div>
+		</div>
+	</header>
+	<script>
+		const searchLine = document.getElementById("search");
+		const searchLineParent = searchLine.parentNode;
+
+		searchLine.addEventListener("focus", e => {
+searchLineParent.classList.add("header__in-wrap_active");
+		});
+
+		searchLine.addEventListener("blur", e => {
+const searchValue = searchLine.value;
+
+if (!searchValue) {
+	searchLineParent.classList.remove("header__in-wrap_active");
+};
+		});
+	</script>
+		{% block content %}
+		{% endblock %}
+</body>
+</html>
